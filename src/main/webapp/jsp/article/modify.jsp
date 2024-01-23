@@ -1,10 +1,10 @@
 <%@ page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%
 Map<String, Object> articleRow = (Map<String, Object>) request.getAttribute("articleRow");
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,25 +15,23 @@ Map<String, Object> articleRow = (Map<String, Object>) request.getAttribute("art
 
 	<h2>게시물 수정</h2>
 
+	<h3><%=articleRow.get("id")%>번 게시물 수정
+	</h3>
+	<div>
+		번호 :
+		<%=articleRow.get("id")%></div>
+	<div>
+		날짜 :
+		<%=articleRow.get("regDate")%></div>
 	<form method="POST" action="doModify">
+		<input type="hidden" value="<%=articleRow.get("id")%>" name="id" />
 		<div>
-			제목:
-			<%
-		articleRow.get("title");
-		%>
+			제목 : <input type="text" name="title"
+				value="<%=articleRow.get("title")%>"/ >
 		</div>
 		<div>
-			내용:
-			<%
-		articleRow.get("content");
-		%>
-		</div>
-		<div>
-			수정 제목 : <input type="text" placeholder="제목을 입력해주세요" name="title" />
-		</div>
-		<div>
-			수정 내용 :
-			<textarea type="text" placeholder="내용을 입력해주세요" name="body"></textarea>
+			내용 :
+			<textarea type="text" name="body"><%=articleRow.get("body")%></textarea>
 		</div>
 		<button type="submit">수정</button>
 	</form>
