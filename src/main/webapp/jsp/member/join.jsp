@@ -1,6 +1,12 @@
+<%@ page import="java.util.List"%>
 <%@ page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%
+Map<String, Object> articleRow = (Map<String, Object>) request.getAttribute("articleRow");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,6 +68,15 @@
 				alert('이름을 입력해주세요');
 				form.name.focus();
 				return;
+			}
+			
+			if(loginId == articleRow.get("loginId")){
+				alert("이미 존재하는 아이디입니다.");
+				return;
+			}
+			
+			if(articleRow == null){
+				console.log('nullllllllll ');
 			}
 
 			JoinForm__submitDone = true;
